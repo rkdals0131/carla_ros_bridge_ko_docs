@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://rkdals0131.github.io/carla_ros_bridge_ko_docs/carla_spawn_objects_ko/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>CARLA Spawn Objects - Carla ROS Bridge Documentation 번역</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "CARLA Spawn Objects";
+        var mkdocs_page_input_path = "carla_spawn_objects_ko.md";
+        var mkdocs_page_url = "/carla_ros_bridge_ko_docs/carla_spawn_objects_ko/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Carla ROS Bridge Documentation 번역
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../index_ko/">홈</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">시작하기</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_installation_ros1_ko/">ROS 1 설치</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_installation_ros2_ko/">ROS 2 설치</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">주요 패키지</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../run_ros_ko/">CARLA ROS 브리지</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_compatibility_ko/">ROS 호환성 노드</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">추가 패키지</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">CARLA Spawn Objects</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">설정 및 센서 구성</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">설정 생성</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">차량 스폰</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">차량 리스폰</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">센서 스폰</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">기존 차량에 센서 부착</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_manual_control_ko/">CARLA Manual Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ackermann_control_ko/">CARLA Ackermann Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_waypoint_ko/">CARLA Waypoint Publisher</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ad_agent_ko/">CARLA AD Agent</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ad_demo_ko/">CARLA AD Demo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ros_scenario_runner_ko/">CARLA ROS Scenario Runner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_twist_to_control_ko/">CARLA Twist to Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rviz_carla_plugin_ko/">RVIZ 플러그인</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rqt_plugin_ko/">RQT 플러그인</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pcl_recorder_ko/">PCL Recorder</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">참조 자료</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_sensors_ko/">ROS 센서</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_msgs_ko/">ROS 메시지</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Carla ROS Bridge Documentation 번역</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">추가 패키지</li>
+      <li class="breadcrumb-item active">CARLA Spawn Objects</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/rkdals0131/carla_ros_bridge_ko_docs/edit/master/docs/carla_spawn_objects_ko.md">Edit on rkdals0131/carla_ros_bridge_ko_docs</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="carla-spawn-objects">Carla Spawn Objects</h1>
+<p><a href="https://github.com/carla-simulator/ros-bridge/tree/master/carla_spawn_objects"><code>carla_spawn_objects</code> 패키지</a>는 액터(차량, 센서, 보행자)를 스폰하고 센서를 액터에 부착하는 데 사용됩니다.</p>
+<ul>
+<li><a href="#설정-및-센서-구성"><strong>설정 및 센서 구성</strong></a><ul>
+<li><a href="#설정-생성">설정 생성</a></li>
+</ul>
+</li>
+<li><a href="#차량-스폰"><strong>차량 스폰</strong></a><ul>
+<li><a href="#차량-리스폰">차량 리스폰</a></li>
+</ul>
+</li>
+<li><a href="#센서-스폰"><strong>센서 스폰</strong></a><ul>
+<li><a href="#기존-차량에-센서-부착">기존 차량에 센서 부착</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="_1">설정 및 센서 구성</h2>
+<p>객체와 부착된 센서는 <code>.json</code> 파일을 통해 정의됩니다. 이 파일의 기본 위치는 <code>carla_spawn_objects/config/objects.json</code>입니다. 위치를 변경하려면 패키지를 시작할 때 비공개 ROS 파라미터 <code>objects_definition_file</code>을 통해 파일 경로를 전달합니다:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># ROS 1</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>roslaunch<span class="w"> </span>carla_spawn_objects<span class="w"> </span>carla_spawn_objects.launch<span class="w"> </span>objects_definition_file:<span class="o">=</span>경로/objects.json
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># ROS 2</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>ros2<span class="w"> </span>launch<span class="w"> </span>carla_spawn_objects<span class="w"> </span>carla_spawn_objects.launch.py<span class="w"> </span>objects_definition_file:<span class="o">=</span>경로/objects.json
+</code></pre></div>
+<h3 id="_2">설정 생성</h3>
+<p><a href="https://github.com/carla-simulator/ros-bridge/blob/master/carla_spawn_objects/config/objects.json">ros-bridge 저장소</a>에서 예제를 찾을 수 있으며, 다음 개요를 따라 자신만의 설정 및 센서 구성을 만들 수 있습니다:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">&quot;objects&quot;</span><span class="p">:</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="p">[</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;센서-타입&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;이름&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">            </span><span class="nt">&quot;spawn_point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;z&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;roll&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;pitch&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;yaw&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">            </span><span class="err">&lt;추가</span><span class="mi">-</span><span class="err">센서</span><span class="mi">-</span><span class="err">속성&gt;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;차량-타입&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;차량-이름&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">            </span><span class="nt">&quot;spawn_point&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-11.1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">138.5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;z&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;roll&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;pitch&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;yaw&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-178.7</span><span class="p">},</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">            </span><span class="nt">&quot;sensors&quot;</span><span class="p">:</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">                </span><span class="p">[</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">                </span><span class="err">&lt;차량에</span><span class="mi">-</span><span class="err">부착할</span><span class="mi">-</span><span class="err">센서&gt;</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">                </span><span class="p">]</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="err">...</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="p">]</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="p">}</span>
+</code></pre></div>
+<div class="admonition 주의">
+<p class="admonition-title">주의</p>
+<p>위치를 직접 정의할 때 ROS는 <a href="https://www.ros.org/reps/rep-0103.html#chirality">오른손 좌표계</a>를 사용한다는 점을 기억하십시오.</p>
+</div>
+<p>모든 센서 속성은 <a href="https://carla.readthedocs.io/en/latest/bp_library/">블루프린트 라이브러리</a>에 설명된 대로 정의됩니다.</p>
+<hr />
+<h2 id="_3">차량 스폰</h2>
+<ul>
+<li>특정 스폰 지점이 정의되지 않은 경우, 차량은 무작위 위치에 스폰됩니다.</li>
+<li>
+<p>차량이 스폰될 위치를 정의하는 방법에는 두 가지가 있습니다:</p>
+<ul>
+<li>
+<p>원하는 위치를 ROS 파라미터 <code>spawn_point_&lt;차량-이름&gt;</code>에 전달합니다. <code>&lt;차량-이름&gt;</code>은 <code>.json</code> 파일에서 차량에 부여한 <code>id</code>가 됩니다:</p>
+<div class="highlight"><pre><span></span><code># ROS 1
+roslaunch carla_spawn_objects carla_spawn_objects.launch spawn_point_&lt;차량-이름&gt;:=x,y,z,roll,pitch,yaw
+
+# ROS 2
+ros2 launch carla_spawn_objects carla_spawn_objects.launch.py spawn_point_&lt;차량-이름&gt;:=x,y,z,roll,pitch,yaw
+</code></pre></div>
+</li>
+<li>
+<p>초기 위치를 <code>.json</code> 파일에 직접 정의합니다:</p>
+<div class="highlight"><pre><span></span><code>{
+&quot;type&quot;: &quot;vehicle.*&quot;,
+&quot;id&quot;: &quot;ego_vehicle&quot;,
+&quot;spawn_point&quot;: {&quot;x&quot;: -11.1, &quot;y&quot;: 138.5, &quot;z&quot;: 0.2, &quot;roll&quot;: 0.0, &quot;pitch&quot;: 0.0, &quot;yaw&quot;: -178.7},
+}
+</code></pre></div>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_4">차량 리스폰</h3>
+<p>시뮬레이션 중에 차량을 다른 위치로 리스폰하려면 <code>/carla/&lt;ROLE NAME&gt;/&lt;CONTROLLER_ID&gt;/initialpose</code> 토픽에 발행합니다. 이 기능을 사용하려면:</p>
+<ol>
+<li>
+<p><code>.json</code> 파일에서 차량에 <code>actor.pseudo.control</code> 의사 액터를 부착합니다. 이 액터의 <code>id</code> 값은 토픽에 발행하는 데 사용된 <code>&lt;CONTROLLER_ID&gt;</code> 값과 동일해야 합니다:</p>
+<div class="highlight"><pre><span></span><code>{
+&quot;type&quot;: &quot;vehicle.*&quot;,
+&quot;id&quot;: &quot;ego_vehicle&quot;,
+&quot;sensors&quot;:
+[
+    {
+    &quot;type&quot;: &quot;actor.pseudo.control&quot;,
+    &quot;id&quot;: &quot;control&quot;
+    }
+]
+}
+</code></pre></div>
+</li>
+<li>
+<p><code>&lt;CONTROLLER_ID&gt;</code>를 ROS 파라미터 <code>controller_id</code>(기본값 = 'control')의 인수로 전달하여 <code>set_inital_pose</code> 노드를 시작합니다:</p>
+<div class="highlight"><pre><span></span><code>roslaunch carla_spawn_objects set_initial_pose.launch controller_id:=&lt;CONTROLLER_ID&gt;
+</code></pre></div>
+</li>
+<li>
+<p>새 위치를 설정하는 메시지를 발행하는 선호되는 방법은 RVIZ 인터페이스에서 사용 가능한 <strong>2D Pose Estimate</strong> 버튼을 사용하는 것입니다. 그런 다음 맵의 뷰포트를 클릭하여 해당 위치에 리스폰할 수 있습니다. 이렇게 하면 현재 <code>ego_vehicle</code>이 삭제되고 지정된 위치에 다시 스폰됩니다.</p>
+</li>
+</ol>
+<blockquote>
+<p><img alt="rviz_set_start_goal" src="../images/rviz_set_start_goal.png" /></p>
+</blockquote>
+<hr />
+<h2 id="_5">센서 스폰</h2>
+<ul>
+<li>센서의 초기 위치는 차량과 마찬가지로 <code>.json</code> 파일에 직접 정의해야 합니다.</li>
+<li>차량에 부착된 센서의 스폰 지점은 차량을 기준으로 상대적으로 간주됩니다.</li>
+</ul>
+<h3 id="_6">기존 차량에 센서 부착</h3>
+<p>이미 존재하는 차량에 센서를 부착할 수 있습니다. 그렇게 하려면:</p>
+<ol>
+<li>
+<p><code>.json</code> 파일에 <code>sensor.pseudo.actor_list</code> 의사 센서를 정의합니다. 이렇게 하면 이미 존재하는 액터 목록에 접근할 수 있습니다.</p>
+<div class="highlight"><pre><span></span><code>...
+{
+    &quot;type&quot;: &quot;sensor.pseudo.actor_list&quot;,
+    &quot;id&quot;: &quot;actor_list&quot;
+},
+</code></pre></div>
+</li>
+<li>
+<p>나머지 센서를 필요에 따라 정의합니다.</p>
+</li>
+<li><code>spawn_sensors_only</code> 파라미터를 True로 설정하여 노드를 시작합니다. 이렇게 하면 <code>.json</code> 파일에 지정된 것과 동일한 <code>id</code> 및 <code>type</code>을 가진 액터가 이미 활성 상태인지 확인하고, 그렇다면 이 액터에 센서를 부착합니다.<div class="highlight"><pre><span></span><code># ROS 1
+roslaunch carla_spawn_objects carla_spawn_objects.launch spawn_sensors_only:=True
+
+# ROS 2
+ros2 launch carla_spawn_objects carla_spawn_objects.launch.py spawn_sensors_only:=True
+</code></pre></div>
+</li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ros_compatibility_ko/" class="btn btn-neutral float-left" title="ROS 호환성 노드"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../carla_manual_control_ko/" class="btn btn-neutral float-right" title="CARLA Manual Control">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/rkdals0131/carla_ros_bridge_ko_docs/" class="fa fa-code-fork" style="color: #fcfcfc"> rkdals0131/carla_ros_bridge_ko_docs</a>
+        </span>
+    
+    
+      <span><a href="../ros_compatibility_ko/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../carla_manual_control_ko/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

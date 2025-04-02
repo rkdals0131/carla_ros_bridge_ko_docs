@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://rkdals0131.github.io/carla_ros_bridge_ko_docs/ros_compatibility_ko/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>ROS 호환성 노드 - Carla ROS Bridge Documentation 번역</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "ROS \ud638\ud658\uc131 \ub178\ub4dc";
+        var mkdocs_page_input_path = "ros_compatibility_ko.md";
+        var mkdocs_page_url = "/carla_ros_bridge_ko_docs/ros_compatibility_ko/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Carla ROS Bridge Documentation 번역
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../index_ko/">홈</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">시작하기</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_installation_ros1_ko/">ROS 1 설치</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_installation_ros2_ko/">ROS 2 설치</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">주요 패키지</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../run_ros_ko/">CARLA ROS 브리지</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">ROS 호환성 노드</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ros_1">ROS 파라미터</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">서비스</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">추가 패키지</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_spawn_objects_ko/">CARLA Spawn Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_manual_control_ko/">CARLA Manual Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ackermann_control_ko/">CARLA Ackermann Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_waypoint_ko/">CARLA Waypoint Publisher</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ad_agent_ko/">CARLA AD Agent</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ad_demo_ko/">CARLA AD Demo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ros_scenario_runner_ko/">CARLA ROS Scenario Runner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_twist_to_control_ko/">CARLA Twist to Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rviz_carla_plugin_ko/">RVIZ 플러그인</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rqt_plugin_ko/">RQT 플러그인</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pcl_recorder_ko/">PCL Recorder</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">참조 자료</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_sensors_ko/">ROS 센서</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_msgs_ko/">ROS 메시지</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Carla ROS Bridge Documentation 번역</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">주요 패키지</li>
+      <li class="breadcrumb-item active">ROS 호환성 노드</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/rkdals0131/carla_ros_bridge_ko_docs/edit/master/docs/ros_compatibility_ko.md">Edit on rkdals0131/carla_ros_bridge_ko_docs</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ros">ROS 호환성 노드</h1>
+<p><a href="https://github.com/carla-simulator/ros-bridge/tree/master/ros_compatibility">ROS 호환성 노드</a>는 패키지가 ROS 1과 ROS 2 모두에서 원활하게 사용될 수 있도록 하는 인터페이스입니다. 환경 변수 <code>ROS_VERSION</code>에 따라 동일한 API가 ROS 1 또는 ROS 2 함수를 호출합니다. <code>CompatibleNode</code>를 상속받는 클래스를 생성하여 사용됩니다.</p>
+<hr />
+<h2 id="ros_1">ROS 파라미터</h2>
+<p>ROS 2에서는 기본적으로 파라미터를 설정하거나 접근하기 전에 선언해야 합니다. ROS 1에서는 이러한 제약이 없습니다. ROS 1과 ROS 2 모드가 유사한 방식으로 작동하도록 유지하기 위해, ROS 2 버전의 <code>CompatibleNode</code>에서는 <code>allow_undeclared_parameters</code> 파라미터가 <code>True</code>로 설정되어 있어 사전에 선언하지 않고도 파라미터를 사용할 수 있습니다.</p>
+<hr />
+<h2 id="_1">서비스</h2>
+<p>ROS 2에서는 서비스를 비동기적으로 호출할 수 있습니다. ROS 1에서는 이것이 불가능합니다. 따라서 ROS 2 버전의 <code>call_service()</code> 메서드는 ROS 1의 동기식 동작을 모방하기 위해 비동기적으로 호출한 후 서버의 응답을 기다립니다.</p>
+<div class="admonition 경고">
+<p class="admonition-title">경고</p>
+<p>응답을 기다리는 동안 ROS 2의 <code>call_service()</code> 메서드는 노드를 스핀합니다. 다른 스레드가 동일한 노드를 병렬로 스핀하는 경우 문제(오류 또는 데드락)가 발생할 수 있습니다.</p>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../run_ros_ko/" class="btn btn-neutral float-left" title="CARLA ROS 브리지"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../carla_spawn_objects_ko/" class="btn btn-neutral float-right" title="CARLA Spawn Objects">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/rkdals0131/carla_ros_bridge_ko_docs/" class="fa fa-code-fork" style="color: #fcfcfc"> rkdals0131/carla_ros_bridge_ko_docs</a>
+        </span>
+    
+    
+      <span><a href="../run_ros_ko/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../carla_spawn_objects_ko/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

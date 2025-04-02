@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://rkdals0131.github.io/carla_ros_bridge_ko_docs/run_ros_ko/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>CARLA ROS 브리지 - Carla ROS Bridge Documentation 번역</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "CARLA ROS \ube0c\ub9ac\uc9c0";
+        var mkdocs_page_input_path = "run_ros_ko.md";
+        var mkdocs_page_url = "/carla_ros_bridge_ko_docs/run_ros_ko/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Carla ROS Bridge Documentation 번역
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../index_ko/">홈</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">시작하기</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_installation_ros1_ko/">ROS 1 설치</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_installation_ros2_ko/">ROS 2 설치</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">주요 패키지</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">CARLA ROS 브리지</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ros_1">ROS 환경 설정</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#ros-1">ROS 1 환경 준비:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ros-2">ROS 2 환경 준비:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ros_2">ROS 브리지 실행</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#carla">CARLA 설정 구성</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ros_3">동기 모드에서 ROS 브리지 사용</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">에고 차량 제어</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ros-api">ROS API</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#subscriptions">구독 (Subscriptions)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#publications">발행 (Publications)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#services">서비스 (Services)</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_compatibility_ko/">ROS 호환성 노드</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">추가 패키지</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_spawn_objects_ko/">CARLA Spawn Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_manual_control_ko/">CARLA Manual Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ackermann_control_ko/">CARLA Ackermann Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_waypoint_ko/">CARLA Waypoint Publisher</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ad_agent_ko/">CARLA AD Agent</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ad_demo_ko/">CARLA AD Demo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ros_scenario_runner_ko/">CARLA ROS Scenario Runner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_twist_to_control_ko/">CARLA Twist to Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rviz_carla_plugin_ko/">RVIZ 플러그인</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rqt_plugin_ko/">RQT 플러그인</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pcl_recorder_ko/">PCL Recorder</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">참조 자료</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_sensors_ko/">ROS 센서</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_msgs_ko/">ROS 메시지</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Carla ROS Bridge Documentation 번역</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">주요 패키지</li>
+      <li class="breadcrumb-item active">CARLA ROS 브리지</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/rkdals0131/carla_ros_bridge_ko_docs/edit/master/docs/run_ros_ko.md">Edit on rkdals0131/carla_ros_bridge_ko_docs</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ros">ROS 브리지 패키지</h1>
+<p><code>carla_ros_bridge</code> 패키지는 기본적인 ROS 브리지 기능을 실행하는 데 필요한 주요 패키지입니다. 이 섹션에서는 ROS 환경 준비, ROS 브리지 실행, 설정 구성 방법, 동기 모드 사용, 에고 차량 제어 및 사용 가능한 구독, 발행, 서비스 요약을 배웁니다.</p>
+<ul>
+<li><a href="#ros-환경-설정"><strong>ROS 환경 설정</strong></a><ul>
+<li><a href="#ros-1-환경-준비">ROS 1 환경 준비</a></li>
+<li><a href="#ros-2-환경-준비">ROS 2 환경 준비</a></li>
+</ul>
+</li>
+<li><a href="#ros-브리지-실행"><strong>ROS 브리지 실행</strong></a></li>
+<li><a href="#carla-설정-구성"><strong>CARLA 설정 구성</strong></a></li>
+<li><a href="#동기-모드에서-ros-브리지-사용"><strong>동기 모드에서 ROS 브리지 사용</strong></a></li>
+<li><a href="#에고-차량-제어"><strong>에고 차량 제어</strong></a></li>
+<li><a href="#ros-api"><strong>ROS API</strong></a><ul>
+<li><a href="#구독-subscriptions">구독 (Subscriptions)</a></li>
+<li><a href="#발행-publications">발행 (Publications)</a></li>
+<li><a href="#서비스-services">서비스 (Services)</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="ros_1">ROS 환경 설정</h2>
+<p>ROS 브리지는 공통 인터페이스를 사용하는 별도의 구현을 통해 ROS 1과 ROS 2를 모두 지원합니다. ROS 브리지를 실행하려면 사용하는 모든 터미널에서 ROS 버전에 따라 ROS 환경을 설정해야 합니다:</p>
+<h4 id="ros-1">ROS 1 환경 준비:</h4>
+<p>실행할 명령은 ROS 브리지를 Debian 패키지를 통해 설치했는지 또는 소스 빌드를 통해 설치했는지에 따라 다릅니다. Debian 옵션의 경우 경로에서 ROS 버전을 변경해야 합니다:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="c1"># ROS 브리지의 Debian 설치용. 설치된 ROS 버전에 따라 명령을 변경하십시오.</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nb">source</span><span class="w"> </span>/opt/carla-ros-bridge/&lt;melodic/noetic&gt;/setup.bash
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="c1"># ROS 브리지의 GitHub 저장소 설치용</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nb">source</span><span class="w"> </span>~/carla-ros-bridge/catkin_ws/devel/setup.bash
+</code></pre></div>
+<h4 id="ros-2">ROS 2 환경 준비:</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span><span class="nb">source</span><span class="w"> </span>./install/setup.bash
+</code></pre></div>
+<h2 id="ros_2">ROS 브리지 실행</h2>
+<p>ROS 환경을 설정하고 CARLA 서버를 실행한 후에는 다른 패키지를 사용하기 전에 <code>carla_ros_bridge</code> 패키지를 시작해야 합니다. 그렇게 하려면 다음 명령을 실행합니다:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="c1"># ROS 1</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>roslaunch<span class="w"> </span>carla_ros_bridge<span class="w"> </span>carla_ros_bridge.launch
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="c1"># ROS 2</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span>ros2<span class="w"> </span>launch<span class="w"> </span>carla_ros_bridge<span class="w"> </span>carla_ros_bridge.launch.py
+</code></pre></div>
+<p>ROS 브리지를 시작하는 동시에 다른 패키지나 플러그인을 시작하는 위의 기능을 결합한 다른 launchfile도 있습니다:</p>
+<ul>
+<li><code>carla_ros_bridge_with_example_ego_vehicle.launch</code> (ROS 1) 및 <code>carla_ros_bridge_with_example_ego_vehicle.launch.py</code> (ROS 2)는 <a href="../carla_spawn_objects_ko/"><code>carla_spawn_objects</code></a> 및 <a href="../carla_manual_control_ko/"><code>carla_manual_control</code></a> 패키지와 함께 ROS 브리지를 시작합니다.</li>
+</ul>
+<hr />
+<h2 id="carla">CARLA 설정 구성</h2>
+<p>설정은 launchfile 내에서 설정하거나 명령줄에서 파일을 실행할 때 인수로 전달해야 합니다. 예를 들면 다음과 같습니다:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>roslaunch<span class="w"> </span>carla_ros_bridge<span class="w"> </span>carla_ros_bridge.launch<span class="w"> </span>passive:<span class="o">=</span>True
+</code></pre></div>
+<p>다음 설정을 사용할 수 있습니다:</p>
+<ul>
+<li><strong>use_sim_time</strong>: ROS가 시스템 시간 대신 시뮬레이션 시간을 사용하도록 __True__로 설정해야 합니다. 이 파라미터는 ROS <a href="https://wiki.ros.org/Clock"><code>/clock</code></a> 토픽을 CARLA 시뮬레이션 시간과 동기화합니다.</li>
+<li><strong>host 및 port</strong>: Python 클라이언트를 사용하여 CARLA에 연결하기 위한 네트워크 설정입니다.</li>
+<li><strong>timeout</strong>: 서버와의 성공적인 연결을 기다리는 시간입니다.</li>
+<li><strong>passive</strong>: 수동 모드(Passive mode)는 동기 모드에서 사용하기 위한 것입니다. 활성화되면 ROS 브리지는 한 발 물러서고 다른 클라이언트가 월드를 틱(tick)해야 <strong>합니다</strong>. ROS 브리지는 모든 센서에서 예상되는 모든 데이터가 수신될 때까지 기다립니다.</li>
+<li><strong>synchronous_mode</strong>:<ul>
+<li><strong>false인 경우</strong>: 데이터는 모든 <code>world.on_tick()</code> 및 모든 <code>sensor.listen()</code> 콜백에서 발행됩니다.</li>
+<li><strong>true인 경우 (기본값)</strong>: ROS 브리지는 다음 틱 전에 예상되는 모든 센서 메시지를 기다립니다. 이는 전체 시뮬레이션 속도를 늦출 수 있지만 재현 가능한 결과를 보장합니다.</li>
+</ul>
+</li>
+<li><strong>synchronous_mode_wait_for_vehicle_control_command</strong>: 동기 모드에서 차량 제어가 완료될 때까지 틱을 일시 중지합니다.</li>
+<li><strong>fixed_delta_seconds</strong>: 시뮬레이션 스텝 간의 시뮬레이션 시간(델타 초)입니다. <strong>0.1보다 작아야 합니다</strong>. 이에 대한 자세한 내용은 <a href="https://carla.readthedocs.io/en/latest/adv_synchrony_timestep/">문서</a>를 참조하십시오.</li>
+<li><strong>ego_vehicle</strong>: 에고 차량을 식별하기 위한 역할 이름입니다. 관련 토픽이 생성되어 이러한 차량을 ROS에서 제어할 수 있습니다.</li>
+<li><strong>town</strong>: 사용 가능한 CARLA 타운(예: 'town01') 또는 OpenDRIVE 파일(<code>.xodr</code>로 끝남)을 사용합니다.</li>
+<li><strong>register_all_sensors</strong>:<ul>
+<li><strong>false인 경우</strong>: 브리지에 의해 스폰된 센서만 등록됩니다.</li>
+<li><strong>true인 경우 (기본값)</strong>: 시뮬레이션에 존재하는 모든 센서가 등록됩니다.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="ros_3">동기 모드에서 ROS 브리지 사용</h2>
+<p>ROS 브리지는 기본적으로 동기 모드에서 작동합니다. 재현 가능한 결과를 보장하기 위해 현재 프레임 내에서 예상되는 모든 센서 데이터를 기다립니다.</p>
+<p>동기 모드에서 여러 클라이언트를 실행할 때 하나의 클라이언트만 월드를 틱할 수 있습니다. ROS 브리지는 기본적으로 수동 모드가 활성화되지 않는 한 월드를 틱할 수 있는 유일한 클라이언트가 됩니다. <a href="https://github.com/carla-simulator/ros-bridge/blob/master/carla_ros_bridge/config/settings.yaml"><code>ros-bridge/carla_ros_bridge/config/settings.yaml</code></a>에서 수동 모드를 활성화하면 ROS 브리지가 한 발 물러서서 다른 클라이언트가 월드를 틱하도록 허용합니다. <strong>다른 클라이언트가 월드를 틱해야 하며, 그렇지 않으면 CARLA가 멈춥니다.</strong></p>
+<p>ROS 브리지가 수동 모드가 아닌 경우(ROS 브리지가 월드를 틱하는 경우), 서버에 스텝 제어를 보내는 두 가지 방법이 있습니다:</p>
+<ul>
+<li><code>/carla/control</code> 토픽에 <a href="../ros_msgs_ko/#carlacontrolmsg"><code>carla_msgs.CarlaControl</code></a> 메시지를 보냅니다.</li>
+<li><a href="../rqt_plugin_ko/">Control rqt 플러그인</a>을 사용합니다. 이 플러그인은 간단한 인터페이스를 가진 새 창을 시작합니다. 그런 다음 스텝을 관리하고 <code>/carla/control</code> 토픽에 발행하는 데 사용됩니다. 이를 사용하려면 동기 모드에서 CARLA를 실행한 상태에서 다음 명령을 실행합니다:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">    </span>rqt<span class="w"> </span>--standalone<span class="w"> </span>rqt_carla_control
+</code></pre></div></li>
+</ul>
+<hr />
+<h2 id="_1">에고 차량 제어</h2>
+<p>에고 차량을 제어하는 두 가지 모드가 있습니다:</p>
+<ol>
+<li>일반 모드 - <code>/carla/&lt;ROLE NAME&gt;/vehicle_control_cmd</code>에서 명령 읽기</li>
+<li>수동 모드 - <code>/carla/&lt;ROLE NAME&gt;/vehicle_control_cmd_manual</code>에서 명령 읽기. 이를 통해 소프트웨어 스택에서 발행한 차량 제어 명령을 수동으로 재정의(override)할 수 있습니다.</li>
+</ol>
+<p><code>/carla/&lt;ROLE NAME&gt;/vehicle_control_manual_override</code>에 발행하여 두 모드 간에 전환할 수 있습니다. 이것이 사용되는 예시는 <a href="../carla_manual_control_ko/">Carla Manual Control</a>을 참조하십시오.</p>
+<p>명령줄에서 조향을 테스트하려면:</p>
+<p><strong>1.</strong> 에고 차량과 함께 ROS 브리지를 시작합니다:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="w">    </span><span class="c1"># ROS 1</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span>roslaunch<span class="w"> </span>carla_ros_bridge<span class="w"> </span>carla_ros_bridge_with_example_ego_vehicle.launch
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="c1"># ROS 2</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span>ros2<span class="w"> </span>launch<span class="w"> </span>carla_ros_bridge<span class="w"> </span>carla_ros_bridge_with_example_ego_vehicle.launch.py
+</code></pre></div>
+<p><strong>2.</strong> 다른 터미널에서 <code>/carla/&lt;ROLE NAME&gt;/vehicle_control_cmd</code> 토픽에 발행합니다:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="w">    </span><span class="c1"># 최대 전진 스로틀과 최대 우회전 조향</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="c1"># ROS 1용</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span>rostopic<span class="w"> </span>pub<span class="w"> </span>/carla/ego_vehicle/vehicle_control_cmd<span class="w"> </span>carla_msgs/CarlaEgoVehicleControl<span class="w"> </span><span class="s2">&quot;{throttle: 1.0, steer: 1.0}&quot;</span><span class="w"> </span>-r<span class="w"> </span><span class="m">10</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="c1"># ROS 2용</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>/carla/ego_vehicle/vehicle_control_cmd<span class="w"> </span>carla_msgs/CarlaEgoVehicleControl<span class="w"> </span><span class="s2">&quot;{throttle: 1.0, steer: 1.0}&quot;</span><span class="w"> </span>-r<span class="w"> </span><span class="m">10</span>
+</code></pre></div>
+<p>차량의 현재 상태는 <code>/carla/&lt;ROLE NAME&gt;/vehicle_status</code> 토픽을 통해 수신할 수 있습니다. 차량에 대한 정적 정보는 <code>/carla/&lt;ROLE NAME&gt;/vehicle_info</code>를 통해 수신할 수 있습니다.</p>
+<p><a href="https://docs.ros.org/en/api/ackermann_msgs/html/msg/AckermannDrive.html">AckermannDrive</a> 메시지를 사용하여 에고 차량을 제어할 수 있습니다. 이는 <a href="../carla_ackermann_control_ko/">CARLA Ackermann Control</a> 패키지를 사용하여 달성할 수 있습니다.</p>
+<hr />
+<h2 id="ros-api">ROS API</h2>
+<h4 id="subscriptions">구독 (Subscriptions)</h4>
+<table>
+<thead>
+<tr>
+<th>토픽</th>
+<th>타입</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/carla/debug_marker</code></td>
+<td><a href="https://docs.ros.org/en/api/visualization_msgs/html/msg/MarkerArray.html">visualization_msgs/MarkerArray</a></td>
+<td>CARLA 월드에 마커를 그립니다.</td>
+</tr>
+<tr>
+<td><code>/carla/weather_control</code></td>
+<td><a href="https://github.com/carla-simulator/ros-carla-msgs/blob/master/msg/CarlaWeatherParameters.msg">carla_msgs/CarlaWeatherParameters</a></td>
+<td>CARLA 날씨 파라미터를 설정합니다.</td>
+</tr>
+<tr>
+<td><code>/carla/control</code></td>
+<td><a href="../ros_msgs_ko/#carlacontrolmsg">carla_msgs/CarlaControl</a></td>
+<td>CARLA 시뮬레이션 스텝 제어 (재생/일시정지/스텝)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<div class="admonition 주의">
+<p class="admonition-title">주의</p>
+<p><code>debug_marker</code>를 사용할 때 마커가 센서에서 발행하는 데이터에 영향을 미칠 수 있음을 유의하십시오. 지원되는 마커에는 화살표(두 점으로 지정), 점, 큐브 및 라인 스트립이 포함됩니다.</p>
+</div>
+<p><br></p>
+<h4 id="publications">발행 (Publications)</h4>
+<table>
+<thead>
+<tr>
+<th>토픽</th>
+<th>타입</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/carla/status</code></td>
+<td><a href="../ros_msgs_ko/#carlastatusmsg">carla_msgs/CarlaStatus</a></td>
+<td>CARLA의 현재 상태를 읽습니다.</td>
+</tr>
+<tr>
+<td><code>/carla/world_info</code></td>
+<td><a href="../ros_msgs_ko/#carlaworldinfomsg">carla_msgs/CarlaWorldInfo</a></td>
+<td>현재 CARLA 맵에 대한 정보입니다.</td>
+</tr>
+<tr>
+<td><code>/clock</code></td>
+<td><a href="https://docs.ros.org/en/melodic/api/rosgraph_msgs/html/msg/Clock.html">rosgraph_msgs/Clock</a></td>
+<td>ROS에서 시뮬레이션된 시간을 발행합니다.</td>
+</tr>
+<tr>
+<td><code>/rosout</code></td>
+<td><a href="https://docs.ros.org/en/melodic/api/rosgraph_msgs/html/msg/Log.html">rosgraph_msgs/Log</a></td>
+<td>ROS 로깅입니다.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h4 id="services">서비스 (Services)</h4>
+<table>
+<thead>
+<tr>
+<th>서비스</th>
+<th>타입</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/carla/destroy_object</code></td>
+<td><a href="https://github.com/carla-simulator/ros-carla-msgs/blob/f75637ce83a0b4e8fbd9818980c9b11570ff477c/srv/DestroyObject.srv">carla_msgs/DestroyObject.srv</a></td>
+<td>객체를 파괴합니다.</td>
+</tr>
+<tr>
+<td><code>/carla/get_blueprints</code></td>
+<td><a href="https://github.com/carla-simulator/ros-carla-msgs/blob/f75637ce83a0b4e8fbd9818980c9b11570ff477c/srv/GetBlueprints.srv">carla_msgs/GetBlueprints.srv</a></td>
+<td>블루프린트를 얻습니다.</td>
+</tr>
+<tr>
+<td><code>/carla/spawn_object</code></td>
+<td><a href="https://github.com/carla-simulator/ros-carla-msgs/blob/f75637ce83a0b4e8fbd9818980c9b11570ff477c/srv/SpawnObject.srv">carla_msgs/SpawnObject.srv</a></td>
+<td>객체를 스폰합니다.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ros_installation_ros2_ko/" class="btn btn-neutral float-left" title="ROS 2 설치"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ros_compatibility_ko/" class="btn btn-neutral float-right" title="ROS 호환성 노드">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/rkdals0131/carla_ros_bridge_ko_docs/" class="fa fa-code-fork" style="color: #fcfcfc"> rkdals0131/carla_ros_bridge_ko_docs</a>
+        </span>
+    
+    
+      <span><a href="../ros_installation_ros2_ko/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ros_compatibility_ko/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

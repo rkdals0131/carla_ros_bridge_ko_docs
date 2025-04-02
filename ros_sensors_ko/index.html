@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://rkdals0131.github.io/carla_ros_bridge_ko_docs/ros_sensors_ko/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>ROS 센서 - Carla ROS Bridge Documentation 번역</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "ROS \uc13c\uc11c";
+        var mkdocs_page_input_path = "ros_sensors_ko.md";
+        var mkdocs_page_url = "/carla_ros_bridge_ko_docs/ros_sensors_ko/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Carla ROS Bridge Documentation 번역
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../index_ko/">홈</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">시작하기</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_installation_ros1_ko/">ROS 1 설치</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_installation_ros2_ko/">ROS 2 설치</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">주요 패키지</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../run_ros_ko/">CARLA ROS 브리지</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_compatibility_ko/">ROS 호환성 노드</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">추가 패키지</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_spawn_objects_ko/">CARLA Spawn Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_manual_control_ko/">CARLA Manual Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ackermann_control_ko/">CARLA Ackermann Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_waypoint_ko/">CARLA Waypoint Publisher</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ad_agent_ko/">CARLA AD Agent</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ad_demo_ko/">CARLA AD Demo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ros_scenario_runner_ko/">CARLA ROS Scenario Runner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_twist_to_control_ko/">CARLA Twist to Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rviz_carla_plugin_ko/">RVIZ 플러그인</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rqt_plugin_ko/">RQT 플러그인</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pcl_recorder_ko/">PCL Recorder</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">참조 자료</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">ROS 센서</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">카메라 센서</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#rgb">RGB 카메라</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">깊이 카메라</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">세그멘테이션 카메라</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lidar">LiDAR 센서</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#lidar_1">표준 LiDAR</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lidar_2">시맨틱 LiDAR</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gnss">GNSS 센서</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#imu">IMU 센서</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">레이더 센서</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">기타 센서</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">오도메트리</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_7">차선 침범</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_8">충돌</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_9">센서 설정</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_10">센서 데이터 처리</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_msgs_ko/">ROS 메시지</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Carla ROS Bridge Documentation 번역</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">참조 자료</li>
+      <li class="breadcrumb-item active">ROS 센서</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/rkdals0131/carla_ros_bridge_ko_docs/edit/master/docs/ros_sensors_ko.md">Edit on rkdals0131/carla_ros_bridge_ko_docs</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ros">ROS 센서</h1>
+<p>CARLA ROS 브릿지는 다양한 센서 데이터를 ROS 토픽으로 제공합니다.</p>
+<h2 id="_1">카메라 센서</h2>
+<h3 id="rgb">RGB 카메라</h3>
+<p>실제 카메라와 유사한 RGB 이미지를 제공합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 토픽</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="l l-Scalar l-Scalar-Plain">/carla/&lt;ROLE NAME&gt;/camera/rgb/front/image_color</span><span class="w">  </span><span class="c1"># RGB 이미지</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="l l-Scalar l-Scalar-Plain">/carla/&lt;ROLE NAME&gt;/camera/rgb/front/camera_info</span><span class="w">  </span><span class="c1"># 카메라 정보</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># 메시지 타입</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="l l-Scalar l-Scalar-Plain">sensor_msgs/Image</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="l l-Scalar l-Scalar-Plain">sensor_msgs/CameraInfo</span>
+</code></pre></div>
+<h3 id="_2">깊이 카메라</h3>
+<p>깊이 정보를 포함한 이미지를 제공합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 토픽</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="l l-Scalar l-Scalar-Plain">/carla/&lt;ROLE NAME&gt;/camera/depth/front/image_depth</span><span class="w">  </span><span class="c1"># 깊이 이미지</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="l l-Scalar l-Scalar-Plain">/carla/&lt;ROLE NAME&gt;/camera/depth/front/camera_info</span><span class="w">  </span><span class="c1"># 카메라 정보</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># 메시지 타입</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="l l-Scalar l-Scalar-Plain">sensor_msgs/Image</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="l l-Scalar l-Scalar-Plain">sensor_msgs/CameraInfo</span>
+</code></pre></div>
+<h3 id="_3">세그멘테이션 카메라</h3>
+<p>객체 분류 정보를 포함한 이미지를 제공합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 토픽</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="l l-Scalar l-Scalar-Plain">/carla/&lt;ROLE NAME&gt;/camera/semantic_segmentation/front/image_segmentation</span><span class="w">  </span><span class="c1"># 세그멘테이션 이미지</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="l l-Scalar l-Scalar-Plain">/carla/&lt;ROLE NAME&gt;/camera/semantic_segmentation/front/camera_info</span><span class="w">  </span><span class="c1"># 카메라 정보</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># 메시지 타입</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="l l-Scalar l-Scalar-Plain">sensor_msgs/Image</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="l l-Scalar l-Scalar-Plain">sensor_msgs/CameraInfo</span>
+</code></pre></div>
+<h2 id="lidar">LiDAR 센서</h2>
+<h3 id="lidar_1">표준 LiDAR</h3>
+<p>3D 포인트 클라우드 데이터를 제공합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 토픽</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="l l-Scalar l-Scalar-Plain">/carla/&lt;ROLE NAME&gt;/lidar/front/point_cloud</span><span class="w">  </span><span class="c1"># 포인트 클라우드</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># 메시지 타입</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="l l-Scalar l-Scalar-Plain">sensor_msgs/PointCloud2</span>
+</code></pre></div>
+<h3 id="lidar_2">시맨틱 LiDAR</h3>
+<p>객체 분류 정보가 포함된 3D 포인트 클라우드 데이터를 제공합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># 토픽</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="l l-Scalar l-Scalar-Plain">/carla/&lt;ROLE NAME&gt;/lidar/semantic_segmentation/front/point_cloud</span><span class="w">  </span><span class="c1"># 시맨틱 포인트 클라우드</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># 메시지 타입</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="l l-Scalar l-Scalar-Plain">sensor_msgs/PointCloud2</span>
+</code></pre></div>
+<h2 id="gnss">GNSS 센서</h2>
+<p>위치 정보를 제공합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 토픽</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="l l-Scalar l-Scalar-Plain">/carla/&lt;ROLE NAME&gt;/gnss/fix</span><span class="w">  </span><span class="c1"># GNSS 위치</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 메시지 타입</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="l l-Scalar l-Scalar-Plain">sensor_msgs/NavSatFix</span>
+</code></pre></div>
+<h2 id="imu">IMU 센서</h2>
+<p>관성 측정 데이터를 제공합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># 토픽</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="l l-Scalar l-Scalar-Plain">/carla/&lt;ROLE NAME&gt;/imu/data</span><span class="w">  </span><span class="c1"># IMU 데이터</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># 메시지 타입</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="l l-Scalar l-Scalar-Plain">sensor_msgs/Imu</span>
+</code></pre></div>
+<h2 id="_4">레이더 센서</h2>
+<p>레이더 데이터를 제공합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># 토픽</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="l l-Scalar l-Scalar-Plain">/carla/&lt;ROLE NAME&gt;/radar/front/points</span><span class="w">  </span><span class="c1"># 레이더 포인트</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># 메시지 타입</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="l l-Scalar l-Scalar-Plain">sensor_msgs/PointCloud2</span>
+</code></pre></div>
+<h2 id="_5">기타 센서</h2>
+<h3 id="_6">오도메트리</h3>
+<p>차량의 위치와 방향 정보를 제공합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># 토픽</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="l l-Scalar l-Scalar-Plain">/carla/&lt;ROLE NAME&gt;/odometry</span><span class="w">  </span><span class="c1"># 오도메트리 데이터</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># 메시지 타입</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="l l-Scalar l-Scalar-Plain">nav_msgs/Odometry</span>
+</code></pre></div>
+<h3 id="_7">차선 침범</h3>
+<p>차선 침범 이벤트를 감지합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># 토픽</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="l l-Scalar l-Scalar-Plain">/carla/&lt;ROLE NAME&gt;/lane_invasion</span><span class="w">  </span><span class="c1"># 차선 침범 이벤트</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># 메시지 타입</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="l l-Scalar l-Scalar-Plain">carla_msgs/CarlaLaneInvasionEvent</span>
+</code></pre></div>
+<h3 id="_8">충돌</h3>
+<p>충돌 이벤트를 감지합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># 토픽</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="l l-Scalar l-Scalar-Plain">/carla/&lt;ROLE NAME&gt;/collision</span><span class="w">  </span><span class="c1"># 충돌 이벤트</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># 메시지 타입</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="l l-Scalar l-Scalar-Plain">carla_msgs/CarlaCollisionEvent</span>
+</code></pre></div>
+<h2 id="_9">센서 설정</h2>
+<p>센서는 <code>carla_spawn_objects</code> 패키지를 통해 설정할 수 있습니다. JSON 파일에서 센서의 위치와 파라미터를 정의합니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="nt">&quot;sensors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sensor.camera.rgb&quot;</span><span class="p">,</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;front&quot;</span><span class="p">,</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">      </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">      </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">      </span><span class="nt">&quot;z&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">      </span><span class="nt">&quot;roll&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">      </span><span class="nt">&quot;pitch&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">      </span><span class="nt">&quot;yaw&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">      </span><span class="nt">&quot;width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1920</span><span class="p">,</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">      </span><span class="nt">&quot;height&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1080</span><span class="p">,</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">      </span><span class="nt">&quot;fov&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="_10">센서 데이터 처리</h2>
+<p>ROS 노드에서 센서 데이터를 처리하는 예시:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rospy</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sensor_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">PointCloud2</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">camera_callback</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="c1"># 카메라 이미지 처리</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="k">pass</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">lidar_callback</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>    <span class="c1"># LiDAR 데이터 처리</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>    <span class="k">pass</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;sensor_processor&#39;</span><span class="p">)</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>    <span class="c1"># 토픽 구독</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>    <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/carla/ego_vehicle/camera/rgb/front/image_color&#39;</span><span class="p">,</span> <span class="n">Image</span><span class="p">,</span> <span class="n">camera_callback</span><span class="p">)</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>    <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s1">&#39;/carla/ego_vehicle/lidar/front/point_cloud&#39;</span><span class="p">,</span> <span class="n">PointCloud2</span><span class="p">,</span> <span class="n">lidar_callback</span><span class="p">)</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>    <span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>    <span class="n">main</span><span class="p">()</span> 
+</code></pre></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../pcl_recorder_ko/" class="btn btn-neutral float-left" title="PCL Recorder"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ros_msgs_ko/" class="btn btn-neutral float-right" title="ROS 메시지">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/rkdals0131/carla_ros_bridge_ko_docs/" class="fa fa-code-fork" style="color: #fcfcfc"> rkdals0131/carla_ros_bridge_ko_docs</a>
+        </span>
+    
+    
+      <span><a href="../pcl_recorder_ko/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ros_msgs_ko/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

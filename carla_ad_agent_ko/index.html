@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://rkdals0131.github.io/carla_ros_bridge_ko_docs/carla_ad_agent_ko/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>CARLA AD Agent - Carla ROS Bridge Documentation 번역</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "CARLA AD Agent";
+        var mkdocs_page_input_path = "carla_ad_agent_ko.md";
+        var mkdocs_page_url = "/carla_ros_bridge_ko_docs/carla_ad_agent_ko/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Carla ROS Bridge Documentation 번역
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../index_ko/">홈</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">시작하기</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_installation_ros1_ko/">ROS 1 설치</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_installation_ros2_ko/">ROS 2 설치</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">주요 패키지</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../run_ros_ko/">CARLA ROS 브리지</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_compatibility_ko/">ROS 호환성 노드</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">추가 패키지</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_spawn_objects_ko/">CARLA Spawn Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_manual_control_ko/">CARLA Manual Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ackermann_control_ko/">CARLA Ackermann Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_waypoint_ko/">CARLA Waypoint Publisher</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">CARLA AD Agent</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">요구 사항</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ros-api">ROS API</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#ad">AD 에이전트 노드</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#_2">파라미터</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#subscriptions">구독 (Subscriptions)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#publications">발행 (Publications)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">로컬 플래너 노드</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#_4">파라미터</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#subscriptions_1">구독 (Subscriptions)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#publications_1">발행 (Publications)</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ad_demo_ko/">CARLA AD Demo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ros_scenario_runner_ko/">CARLA ROS Scenario Runner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_twist_to_control_ko/">CARLA Twist to Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rviz_carla_plugin_ko/">RVIZ 플러그인</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rqt_plugin_ko/">RQT 플러그인</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pcl_recorder_ko/">PCL Recorder</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">참조 자료</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_sensors_ko/">ROS 센서</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_msgs_ko/">ROS 메시지</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Carla ROS Bridge Documentation 번역</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">추가 패키지</li>
+      <li class="breadcrumb-item active">CARLA AD Agent</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/rkdals0131/carla_ros_bridge_ko_docs/edit/master/docs/carla_ad_agent_ko.md">Edit on rkdals0131/carla_ros_bridge_ko_docs</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="carla-ad">CARLA AD 에이전트</h1>
+<p><a href="https://github.com/carla-simulator/ros-bridge/tree/master/carla_ad_agent">CARLA AD 에이전트</a>는 주어진 경로를 따라가고, 다른 차량과의 충돌을 피하며, 그라운드 트루스 데이터에 접근하여 신호등 상태를 준수할 수 있는 AD(자율 주행) 에이전트입니다. <a href="../carla_ad_demo_ko/">CARLA AD 데모</a>에서 ROS 브리지를 사용하는 방법의 예시를 제공하기 위해 사용됩니다.</p>
+<ul>
+<li><a href="#요구-사항"><strong>요구 사항</strong></a></li>
+<li><a href="#ros-api"><strong>ROS API</strong></a><ul>
+<li><a href="#ad-에이전트-노드"><strong>AD 에이전트 노드</strong></a><ul>
+<li><a href="#파라미터">파라미터</a></li>
+<li><a href="#구독-subscriptions">구독 (Subscriptions)</a></li>
+<li><a href="#발행-publications">발행 (Publications)</a></li>
+</ul>
+</li>
+<li><a href="#로컬-플래너-노드"><strong>로컬 플래너 노드</strong></a><ul>
+<li><a href="#파라미터-1">파라미터</a></li>
+<li><a href="#구독-subscriptions-1">구독 (Subscriptions)</a></li>
+<li><a href="#발행-publications-1">발행 (Publications)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>내부적으로 CARLA AD 에이전트는 <a href="https://github.com/carla-simulator/ros-bridge/blob/ros2/carla_ad_agent/src/carla_ad_agent/local_planner.py">로컬 플래닝</a>을 위한 별도의 노드를 사용합니다. 이 노드는 기어 변속 지연이 없는 <code>vehicle.tesla.model3</code>에 최적화되어 있습니다.</p>
+<p>PID 파라미터는 <a href="https://en.wikipedia.org/wiki/Ziegler%E2%80%93Nichols_method">Ziegler-Nichols 방법</a>을 통해 수집되었습니다.</p>
+<hr />
+<h2 id="_1">요구 사항</h2>
+<p><code>carla_ad_agent</code>를 사용하려면 최소한의 센서 세트를 스폰해야 합니다 (<a href="../carla_spawn_objects_ko/">Carla Spawn Objects</a>에서 센서 스폰 방법에 대한 정보 참조):</p>
+<ul>
+<li>차량에 부착된 <code>odometry</code> 역할 이름(role-name)을 가진 오도메트리 의사 센서 (<code>sensor.pseudo.odom</code>).</li>
+<li>차량에 부착된 <code>objects</code> 역할 이름을 가진 객체 의사 센서 (<code>sensor.pseudo.objects</code>).</li>
+<li><code>traffic_lights</code> 역할 이름을 가진 신호등 의사 센서 (<code>sensor.pseudo.traffic_lights</code>).</li>
+</ul>
+<hr />
+<h2 id="ros-api">ROS API</h2>
+<h3 id="ad">AD 에이전트 노드</h3>
+<h4 id="_2">파라미터</h4>
+<table>
+<thead>
+<tr>
+<th>파라미터</th>
+<th>타입</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>role_name</code></td>
+<td>string (기본값: <code>ego_vehicle</code>)</td>
+<td>에고 차량의 CARLA 역할 이름</td>
+</tr>
+<tr>
+<td><code>avoid_risk</code></td>
+<td>bool (기본값: <code>true</code>)</td>
+<td>True이면 다른 차량과의 충돌을 피하고 신호등을 준수합니다</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h4 id="subscriptions">구독 (Subscriptions)</h4>
+<table>
+<thead>
+<tr>
+<th>토픽</th>
+<th>타입</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/carla/&lt;ROLE NAME&gt;/target_speed</code></td>
+<td><a href="https://docs.ros.org/en/api/std_msgs/html/msg/Float64.html">std_msgs/Float64</a></td>
+<td>에고 차량의 목표 속도</td>
+</tr>
+<tr>
+<td><code>/carla/&lt;ROLE NAME&gt;/odometry</code></td>
+<td><a href="https://docs.ros.org/en/api/nav_msgs/html/msg/Odometry.html">nav_msgs/Odometry</a></td>
+<td>에고 차량의 오도메트리</td>
+</tr>
+<tr>
+<td><code>/carla/&lt;ROLE NAME&gt;/vehicle_info</code></td>
+<td><a href="../ros_msgs_ko/#carlaegovehicleinfomsg">carla_msgs/CarlaEgoVehicleInfo</a></td>
+<td>에고 차량의 CARLA 액터 ID 식별</td>
+</tr>
+<tr>
+<td><code>/carla/&lt;ROLE NAME&gt;/objects</code></td>
+<td><a href="https://docs.ros.org/en/melodic/api/derived_object_msgs/html/msg/ObjectArray.html">derived_object_msgs/ObjectArray</a></td>
+<td>다른 액터에 대한 정보</td>
+</tr>
+<tr>
+<td><code>/carla/traffic_lights/status</code></td>
+<td><a href="../ros_msgs_ko/#carlatrafficlightstatuslistmsg">carla_msgs/CarlaTrafficLightStatusList</a></td>
+<td>현재 신호등 상태 가져오기</td>
+</tr>
+<tr>
+<td><code>/carla/traffic_lights/info</code></td>
+<td><a href="../ros_msgs_ko/#carlatrafficlightinfolistmsg">carla_msgs/CarlaTrafficLightInfoList</a></td>
+<td>신호등 정보 가져오기</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h4 id="publications">발행 (Publications)</h4>
+<table>
+<thead>
+<tr>
+<th>토픽</th>
+<th>타입</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/carla/&lt;ROLE NAME&gt;/speed_command</code></td>
+<td><a href="https://docs.ros.org/en/api/std_msgs/html/msg/Float64.html">std_msgs/Float64</a></td>
+<td>목표 속도</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="_3">로컬 플래너 노드</h3>
+<h4 id="_4">파라미터</h4>
+<table>
+<thead>
+<tr>
+<th>파라미터</th>
+<th>타입</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>role_name</code></td>
+<td>string (기본값: <code>ego_vehicle</code>)</td>
+<td>에고 차량의 CARLA 역할 이름</td>
+</tr>
+<tr>
+<td><code>control_time_step</code></td>
+<td>float (기본값: <code>0.05</code>)</td>
+<td>제어 루프 속도</td>
+</tr>
+<tr>
+<td><code>Kp_lateral</code></td>
+<td>float (기본값: <code>0.9</code>)</td>
+<td>횡방향 PID 컨트롤러의 비례(P) 항</td>
+</tr>
+<tr>
+<td><code>Ki_lateral</code></td>
+<td>float (기본값: <code>0.0</code>)</td>
+<td>횡방향 PID 컨트롤러의 적분(I) 항</td>
+</tr>
+<tr>
+<td><code>Kd_lateral</code></td>
+<td>float (기본값: <code>0.0</code>)</td>
+<td>횡방향 PID 컨트롤러의 미분(D) 항</td>
+</tr>
+<tr>
+<td><code>Kp_longitudinal</code></td>
+<td>float (기본값: <code>0.206</code>)</td>
+<td>종방향 PID 컨트롤러의 비례(P) 항</td>
+</tr>
+<tr>
+<td><code>Ki_longitudinal</code></td>
+<td>float (기본값: <code>0.0206</code>)</td>
+<td>종방향 PID 컨트롤러의 적분(I) 항</td>
+</tr>
+<tr>
+<td><code>Kd_longitudinal</code></td>
+<td>float (기본값: <code>0.515</code>)</td>
+<td>종방향 PID 컨트롤러의 미분(D) 항</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h4 id="subscriptions_1">구독 (Subscriptions)</h4>
+<table>
+<thead>
+<tr>
+<th>토픽</th>
+<th>타입</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/carla/&lt;ROLE NAME&gt;/waypoints</code></td>
+<td><a href="https://docs.ros.org/en/api/nav_msgs/html/msg/Path.html">nav_msgs/Path</a></td>
+<td>따라갈 경로</td>
+</tr>
+<tr>
+<td><code>/carla/&lt;ROLE NAME&gt;/odometry</code></td>
+<td><a href="https://docs.ros.org/en/api/nav_msgs/html/msg/Odometry.html">nav_msgs/Odometry</a></td>
+<td>에고 차량의 오도메트리</td>
+</tr>
+<tr>
+<td><code>/carla/&lt;ROLE NAME&gt;/speed_command</code></td>
+<td><a href="https://docs.ros.org/en/api/std_msgs/html/msg/Float64.html">std_msgs/Float64</a></td>
+<td>목표 속도</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h4 id="publications_1">발행 (Publications)</h4>
+<table>
+<thead>
+<tr>
+<th>토픽</th>
+<th>타입</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/carla/&lt;ROLE NAME&gt;/next_target</code></td>
+<td><a href="http://docs.ros.org/en/api/visualization_msgs/html/msg/Marker.html">visualization_msgs/Marker</a></td>
+<td>다음 목표 포즈 마커</td>
+</tr>
+<tr>
+<td><code>/carla/&lt;ROLE NAME&gt;/vehicle_control_cmd</code></td>
+<td><a href="../ros_msgs_ko/#carlaegovehiclecontrolmsg">carla_msgs/CarlaEgoVehicleControl</a></td>
+<td>차량 제어 명령</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../carla_waypoint_ko/" class="btn btn-neutral float-left" title="CARLA Waypoint Publisher"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../carla_ad_demo_ko/" class="btn btn-neutral float-right" title="CARLA AD Demo">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/rkdals0131/carla_ros_bridge_ko_docs/" class="fa fa-code-fork" style="color: #fcfcfc"> rkdals0131/carla_ros_bridge_ko_docs</a>
+        </span>
+    
+    
+      <span><a href="../carla_waypoint_ko/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../carla_ad_demo_ko/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

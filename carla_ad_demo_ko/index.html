@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://rkdals0131.github.io/carla_ros_bridge_ko_docs/carla_ad_demo_ko/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>CARLA AD Demo - Carla ROS Bridge Documentation 번역</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "CARLA AD Demo";
+        var mkdocs_page_input_path = "carla_ad_demo_ko.md";
+        var mkdocs_page_url = "/carla_ros_bridge_ko_docs/carla_ad_demo_ko/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Carla ROS Bridge Documentation 번역
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../index_ko/">홈</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">시작하기</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_installation_ros1_ko/">ROS 1 설치</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_installation_ros2_ko/">ROS 2 설치</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">주요 패키지</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../run_ros_ko/">CARLA ROS 브리지</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_compatibility_ko/">ROS 호환성 노드</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">추가 패키지</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_spawn_objects_ko/">CARLA Spawn Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_manual_control_ko/">CARLA Manual Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ackermann_control_ko/">CARLA Ackermann Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_waypoint_ko/">CARLA Waypoint Publisher</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ad_agent_ko/">CARLA AD Agent</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">CARLA AD Demo</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">시작하기 전에</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">데모 실행</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">랜덤 경로</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">시나리오 실행</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_ros_scenario_runner_ko/">CARLA ROS Scenario Runner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../carla_twist_to_control_ko/">CARLA Twist to Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rviz_carla_plugin_ko/">RVIZ 플러그인</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rqt_plugin_ko/">RQT 플러그인</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pcl_recorder_ko/">PCL Recorder</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">참조 자료</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_sensors_ko/">ROS 센서</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ros_msgs_ko/">ROS 메시지</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Carla ROS Bridge Documentation 번역</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">추가 패키지</li>
+      <li class="breadcrumb-item active">CARLA AD Demo</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/rkdals0131/carla_ros_bridge_ko_docs/edit/master/docs/carla_ad_demo_ko.md">Edit on rkdals0131/carla_ros_bridge_ko_docs</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="carla-ad">CARLA AD 데모</h1>
+<p><a href="https://github.com/carla-simulator/ros-bridge/tree/master/carla_ad_demo">AD 데모</a>는 AD 차량이 포함된 CARLA ROS 환경을 시작하는 데 필요한 모든 것을 제공하는 예제 패키지입니다.</p>
+<ul>
+<li><a href="#시작하기-전에"><strong>시작하기 전에</strong></a></li>
+<li><a href="#데모-실행"><strong>데모 실행</strong></a><ul>
+<li><a href="#랜덤-경로">랜덤 경로</a></li>
+<li><a href="#시나리오-실행">시나리오 실행</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="_1">시작하기 전에</h2>
+<p><a href="https://carla-scenariorunner.readthedocs.io/en/latest/getting_scenariorunner/">Scenario Runner</a>를 설치하고 Scenario Runner <a href="https://github.com/carla-simulator/scenario_runner/blob/master/Docs/getting_started.md">"시작하기" 튜토리얼</a>을 따라 제대로 작동하는지 확인합니다.</p>
+<p>Scenario Runner 설치 경로를 찾기 위해 환경 변수를 설정합니다:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SCENARIO_RUNNER_PATH</span><span class="o">=</span>&lt;scenario_runner_경로&gt;
+</code></pre></div>
+<hr />
+<h2 id="_2">데모 실행</h2>
+<h4 id="_3">랜덤 경로</h4>
+<p>CARLA 서버를 시작한 후, 에고 차량이 무작위로 생성된 경로를 따라가는 데모를 시작하려면 다음 명령을 실행합니다:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># ROS 1</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>roslaunch<span class="w"> </span>carla_ad_demo<span class="w"> </span>carla_ad_demo.launch
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># ROS 2</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>ros2<span class="w"> </span>launch<span class="w"> </span>carla_ad_demo<span class="w"> </span>carla_ad_demo.launch.py
+</code></pre></div>
+<p>다른 터미널에서 다음 명령을 실행하여 추가 차량이나 보행자를 스폰할 수도 있습니다:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>&lt;CARLA_경로&gt;/PythonAPI/examples/
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>python3<span class="w"> </span>spawn_npc.py
+</code></pre></div>
+<h4 id="_4">시나리오 실행</h4>
+<p>미리 정의된 시나리오로 데모를 실행하려면 CARLA 서버를 시작한 후 다음 명령을 실행합니다:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># ROS 1</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>roslaunch<span class="w"> </span>carla_ad_demo<span class="w"> </span>carla_ad_demo_with_scenario.launch
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># ROS 2</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>ros2<span class="w"> </span>launch<span class="w"> </span>carla_ad_demo<span class="w"> </span>carla_ad_demo_with_scenario.launch.py
+</code></pre></div>
+<p>RVIZ Carla 플러그인 내에서 "FollowLeadingVehicle" 예제 시나리오를 선택하고 "Execute"를 누릅니다. 에고 차량의 위치가 재조정되고 시나리오가 처리됩니다.</p>
+<p><code>/carla/available_scenarios</code> 토픽에 발행하여 사용자 정의 시나리오를 지정할 수 있습니다. <a href="https://github.com/carla-simulator/ros-bridge/blob/ros2/carla_ad_demo/launch/carla_ad_demo_with_scenario.launch">launchfile</a>은 이를 수행하는 방법의 예시를 보여줍니다:</p>
+<p>```launch
+  &lt;node pkg="rostopic" type="rostopic" name="publish_scenarios"
+    args="pub /carla/available_scenarios carla_ros_scenario_runner_types/CarlaScenarioList '{ 'scenarios': </p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../carla_ad_agent_ko/" class="btn btn-neutral float-left" title="CARLA AD Agent"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../carla_ros_scenario_runner_ko/" class="btn btn-neutral float-right" title="CARLA ROS Scenario Runner">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/rkdals0131/carla_ros_bridge_ko_docs/" class="fa fa-code-fork" style="color: #fcfcfc"> rkdals0131/carla_ros_bridge_ko_docs</a>
+        </span>
+    
+    
+      <span><a href="../carla_ad_agent_ko/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../carla_ros_scenario_runner_ko/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
