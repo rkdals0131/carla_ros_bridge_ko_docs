@@ -1,0 +1,62 @@
+site_name: Carla ROS Bridge Documentation 번역
+site_url: https://rkdals0131.github.io/carla_ros_bridge_ko_docs/ # 실제 배포될 URL (선택 사항)
+repo_url: https://github.com/rkdals0131/carla_ros_bridge_ko_docs/ # GitHub 저장소 링크 (선택 사항)
+docs_dir: docs
+repo_name: rkdals0131/carla_ros_bridge_ko_docs # 저장소 이름 (선택 사항)
+
+theme:
+  name: material # 사용할 테마 (Material for MkDocs)
+  language: ko # 테마 언어 설정 (한국어 지원)
+  palette: # 색상 팔레트 (선택 사항)
+    primary: indigo
+    accent: indigo
+  features: # 추가 기능 활성화 (선택 사항)
+    - navigation.tabs # 상단 탭 내비게이션
+    - navigation.sections # 왼쪽 사이드바 섹션 확장
+    - toc.integrate # 목차를 왼쪽 사이드바에 통합
+    - navigation.top # 맨 위로 가기 버튼
+    - search.suggest # 검색 제안
+    - search.highlight # 검색 결과 하이라이트
+    - content.tabs.link # 콘텐츠 탭 링크
+    - content.code.annotation # 코드 주석
+    - content.code.copy # 코드 복사 버튼
+
+nav: # 사이트 내비게이션 구조 정의
+  - 홈: index_ko.md
+  - '시작하기':
+    - 'ROS 1 설치': ros_installation_ros1_ko.md
+    - 'ROS 2 설치': ros_installation_ros2_ko.md
+  - '주요 패키지':
+    - 'CARLA ROS 브리지': run_ros_ko.md
+    - 'ROS 호환성 노드': ros_compatibility_ko.md
+  - '추가 패키지':
+    - 'CARLA Spawn Objects': carla_spawn_objects_ko.md
+    - 'CARLA Manual Control': carla_manual_control_ko.md
+    - 'CARLA Ackermann Control': carla_ackermann_control_ko.md
+    - 'CARLA Waypoint Publisher': carla_waypoint_ko.md
+    - 'CARLA AD Agent': carla_ad_agent_ko.md
+    - 'CARLA AD Demo': carla_ad_demo_ko.md
+    - 'CARLA ROS Scenario Runner': carla_ros_scenario_runner_ko.md
+    - 'CARLA Twist to Control': carla_twist_to_control_ko.md
+    - 'RVIZ 플러그인': rviz_plugin_ko.md
+    - 'RQT 플러그인': rqt_plugin_ko.md
+    - 'PCL Recorder': pcl_recorder_ko.md
+  - '참조 자료':
+    - 'ROS 센서': ros_sensors_ko.md
+    - 'ROS 메시지': ros_msgs_ko.md
+
+# Markdown 확장 기능 (선택 사항)
+markdown_extensions:
+  - pymdownx.highlight: # 코드 하이라이팅
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition # 노트, 경고 등 블록
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list # 이미지/링크 등에 속성 추가
+  - md_in_html
+  - pymdownx.emoji: # 이모지 사용
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
