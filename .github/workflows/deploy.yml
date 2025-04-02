@@ -9,7 +9,7 @@ on:
 
 # GITHUB_TOKEN의 권한 설정
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -22,7 +22,6 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -38,16 +37,6 @@ jobs:
           pip install mkdocs mkdocs-material
 
       - name: Build and deploy with MkDocs
-        run: mkdocs gh-deploy --force --clean --verbose # gh-pages 브랜치로 빌드 및 배포
-
-      - name: Setup Pages (if needed, often handled by gh-deploy)
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact (optional, for debugging or separate deployment)
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './site' # MkDocs 빌드 결과 폴더 (기본값)
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        run: mkdocs gh-deploy --force --clean --verbose
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

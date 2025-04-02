@@ -38,7 +38,7 @@ nav: # 사이트 내비게이션 구조 정의
     - 'CARLA AD Demo': carla_ad_demo_ko.md
     - 'CARLA ROS Scenario Runner': carla_ros_scenario_runner_ko.md
     - 'CARLA Twist to Control': carla_twist_to_control_ko.md
-    - 'RVIZ 플러그인': rviz_plugin_ko.md
+    - 'RVIZ 플러그인': rviz_carla_plugin_ko.md
     - 'RQT 플러그인': rqt_plugin_ko.md
     - 'PCL Recorder': pcl_recorder_ko.md
   - '참조 자료':
