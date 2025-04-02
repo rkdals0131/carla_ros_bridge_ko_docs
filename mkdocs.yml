@@ -3,7 +3,6 @@ site_url: https://rkdals0131.github.io/carla_ros_bridge_ko_docs/ # 실제 배포
 repo_url: https://github.com/rkdals0131/carla_ros_bridge_ko_docs/ # GitHub 저장소 링크 (선택 사항)
 docs_dir: docs
 repo_name: rkdals0131/carla_ros_bridge_ko_docs # 저장소 이름 (선택 사항)
-extra_css: [extra.css]
 
 theme:
   name: readthedocs # 사용할 테마 (Material for MkDocs)
