@@ -1,0 +1,53 @@
+name: Deploy MkDocs site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # main 브랜치에 푸시될 때 실행 (또는 사용하는 주 브랜치 이름)
+  # 워크플로우를 수동으로 실행할 수 있도록 허용
+  workflow_dispatch:
+
+# GITHUB_TOKEN의 권한 설정
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 동시 배포를 하나만 허용
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x # 최신 Python 3 사용
+
+      - name: Install dependencies
+        run: |
+          pip install mkdocs mkdocs-material
+
+      - name: Build and deploy with MkDocs
+        run: mkdocs gh-deploy --force --clean --verbose # gh-pages 브랜치로 빌드 및 배포
+
+      - name: Setup Pages (if needed, often handled by gh-deploy)
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact (optional, for debugging or separate deployment)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './site' # MkDocs 빌드 결과 폴더 (기본값)
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
